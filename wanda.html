@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanda</title>
+    <link rel="icon" href="Marvel.jpg">
+    <style>
+        .marginleft {
+            margin-left: 10px;
+        }
+
+        #codeSnipet {
+            margin-top: 57px;
+            margin-right: 198px;
+            color: white;
+            width: 23%;
+            position: absolute;
+            left: 29%;
+            padding: 2%;
+            width: 41%;
+        }
+    </style>
+</head>
+
+<body style="background-color: azure;"> 
+    <div style="display: flex; justify-content: center;">
+        <select id="language" class="marginleft" style="height: 28px;">
+            <option value="javascript">Javascript</option>
+            <option value="python">Python</option>
+        </select>
+        <select id="method" class="marginleft" style="height: 28px;">
+            <option value="get" selected>GET</option>
+            <option value="post">POST</option>
+        </select>
+        <textarea id="postbody" rows="4" placeholder="POST Body" class="marginleft" style="display: none;"></textarea>
+        <input type="text" id="url" placeholder="API URL" style="width: 600px; height: 28px;" class="marginleft">
+        <select id="authantication" class="marginleft" style="height: 28px;">
+            <option value="noAuth" selected>noAuth</option>
+            <option value="bearer">Bearer</option>
+        </select>
+        <textarea id="apiToken" rows="10" placeholder="Bearer Token" class="marginleft" style="display: none;"></textarea>
+        <button id="send" class="marginleft" style="height: 28px;">Send</button>
+    </div>
+    <div id="codeSnipet">
+
+    </div>
+    <script src="wanda.js"></script>
+</body>
+
+</html>
