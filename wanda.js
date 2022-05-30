@@ -11,11 +11,11 @@ method.addEventListener('change',()=>
 {
     if(method.value == "post")
     {
-        textForBody.style.display = '';
+        textForBody.disabled = false;
     }
     else
     {
-        textForBody.style.display = 'none';
+        textForBody.disabled = true;
     }
 })
 
@@ -23,11 +23,11 @@ authantication.addEventListener('change',()=>
 {
     if(authantication.value == "bearer")
     {
-        apiToken.style.display = '';
+        apiToken.disabled = false;
     }
     else
     {
-        apiToken.style.display = 'none';
+        apiToken.disabled = true;
     }
 })
 
@@ -285,6 +285,279 @@ send.addEventListener('click',()=>
                         }
                 }
                 break;
+            case "php":
+                switch(method.value)
+                {
+                    case "get":
+                            switch (authantication.value)
+                            { 
+                                case "noAuth":
+                                    codeSnipet.style.backgroundColor = '#393333';
+                                    codeSnipet.innerHTML = 
+                                    `
+                                    <?php
+                                    <br>
+                                    $curl = curl_init();
+                                    <br>
+                                    curl_setopt_array($curl, array(
+                                    <br>
+                                    CURLOPT_URL => '${url.value}',
+                                    <br>
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    <br>
+                                    CURLOPT_ENCODING => '',
+                                    <br>
+                                    CURLOPT_MAXREDIRS => 10,
+                                    <br>
+                                    CURLOPT_TIMEOUT => 0,
+                                    <br>
+                                    CURLOPT_FOLLOWLOCATION => true,
+                                    <br>
+                                    <br>
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    <br>
+                                    CURLOPT_CUSTOMREQUEST => 'GET',
+                                    <br>
+                                    ));
+                                    <br>
+                                    $response = curl_exec($curl);
+                                    <br>
+                                    curl_close($curl);
+                                    <br>
+                                    echo $response;
+                                    `
+                                    break;
+                                case "bearer":
+                                    codeSnipet.style.backgroundColor = '#393333';
+                                    codeSnipet.innerHTML = 
+                                    `
+                                    <?php
+                                    <br>
+                                    $curl = curl_init();
+                                    <br>
+                                    curl_setopt_array($curl, array(
+                                    <br>
+                                    CURLOPT_URL => '${url.value}',
+                                    <br>
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    <br>
+                                    CURLOPT_ENCODING => '',
+                                    <br>
+                                    CURLOPT_MAXREDIRS => 10,
+                                    <br>
+                                    CURLOPT_TIMEOUT => 0,
+                                    <br>
+                                    CURLOPT_FOLLOWLOCATION => true,
+                                    <br>
+                                    <br>
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    <br>
+                                    CURLOPT_CUSTOMREQUEST => 'GET',
+                                    <br>
+                                    CURLOPT_HTTPHEADER => array(
+                                    <br>
+                                        'Authorization: ${apiToken.value}'
+                                    <br>
+                                      ),
+                                    <br>
+                                    ));
+                                    <br>
+                                    $response = curl_exec($curl);
+                                    <br>
+                                    curl_close($curl);
+                                    <br>
+                                    echo $response;
+                                    `
+                                    break;
+                            }
+                            break;
+                    case "post":
+                            switch (authantication.value)
+                            {
+                                case "noAuth":
+                                    codeSnipet.style.backgroundColor = '#393333';
+                                    codeSnipet.innerHTML = 
+                                    `
+                                    <?php
+                                    <br>
+                                    $curl = curl_init();
+                                    <br>
+                                    curl_setopt_array($curl, array(
+                                    <br>
+                                      CURLOPT_URL => '${url.value}',
+                                    <br>
+                                      CURLOPT_RETURNTRANSFER => true,
+                                      <br>
+                                      CURLOPT_ENCODING => '',
+                                      <br>
+                                      CURLOPT_MAXREDIRS => 10,
+                                      <br>
+                                      CURLOPT_TIMEOUT => 0,
+                                      <br>
+                                      CURLOPT_FOLLOWLOCATION => true,
+                                      <br>
+                                      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                      <br>
+                                      CURLOPT_CUSTOMREQUEST => 'POST',
+                                      <br>
+                                      CURLOPT_POSTFIELDS =>'{
+                                        <br>
+                                        ${textForBody.value}
+                                        <br>
+                                    }',
+                                    <br>
+                                      CURLOPT_HTTPHEADER => array(
+                                        <br>
+                                        'Content-Type: application/json'
+                                        <br>
+                                      ),
+                                      <br>
+                                    ));
+                                    <br>
+                                    $response = curl_exec($curl);
+                                    <br>
+                                    curl_close($curl);
+                                    <br>
+                                    echo $response;                                    
+                                    `
+                                    break;
+                                
+                                case "bearer":
+                                    codeSnipet.style.backgroundColor = '#393333';
+                                    codeSnipet.innerHTML = 
+                                `
+                                <?php
+                                    <br>
+                                    $curl = curl_init();
+                                    <br>
+                                    curl_setopt_array($curl, array(
+                                    <br>
+                                      CURLOPT_URL => '${url.value}',
+                                    <br>
+                                      CURLOPT_RETURNTRANSFER => true,
+                                      <br>
+                                      CURLOPT_ENCODING => '',
+                                      <br>
+                                      CURLOPT_MAXREDIRS => 10,
+                                      <br>
+                                      CURLOPT_TIMEOUT => 0,
+                                      <br>
+                                      CURLOPT_FOLLOWLOCATION => true,
+                                      <br>
+                                      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                      <br>
+                                      CURLOPT_CUSTOMREQUEST => 'POST',
+                                      <br>
+                                      CURLOPT_POSTFIELDS =>'{
+                                        <br>
+                                        ${textForBody.value}
+                                        <br>
+                                    }',
+                                    <br>
+                                      CURLOPT_HTTPHEADER => array(
+                                        <br>
+                                        'Authorization: ${apiToken.value}',
+                                        <br>
+                                        'Content-Type: application/json'
+                                        <br>
+                                      ),
+                                      <br>
+                                    ));
+                                    <br>
+                                    $response = curl_exec($curl);
+                                    <br>
+                                    curl_close($curl);
+                                    <br>
+                                    echo $response;   
+                                `
+                                    break;
+                            }
+                }
+                break;
+            case "c#":
+                    switch(method.value)
+                    {
+                        case "get":
+                                switch (authantication.value)
+                                { 
+                                    case "noAuth":
+                                        codeSnipet.style.backgroundColor = '#393333';
+                                        codeSnipet.innerHTML = 
+                                        `
+                                        var client = new RestClient("${url.value}");
+                                        <br>
+                                        var request = new RestRequest();
+                                        <br>
+                                        var response = await client.ExecuteAsync(request);
+                                        <br>
+                                        Console.WriteLine(response);
+                                        `
+                                        break;
+                                    case "bearer":
+                                        codeSnipet.style.backgroundColor = '#393333';
+                                        codeSnipet.innerHTML = 
+                                        `
+                                        var client = new RestClient("${url.value}");
+                                        <br>
+                                        var request = new RestRequest();
+                                        <br>
+                                        request.AddHeader("Authorization", "${apiToken.value}");
+                                        <br>
+                                        var response = await client.ExecuteAsync(request);
+                                        <br>
+                                        Console.WriteLine(response);
+                                        `
+                                        break;
+                                }
+                                break;
+                        case "post":
+                                switch (authantication.value)
+                                {
+                                    case "noAuth":
+                                        codeSnipet.style.backgroundColor = '#393333';
+                                        codeSnipet.innerHTML = 
+                                        `
+                                        var client = new RestClient("${url.value}");
+                                        <br>
+                                        var body = "${textForBody.value}";
+                                        <br>
+                                        var request = new RestRequest();
+                                        <br>
+                                        request.Method = Method.Post;
+                                        <br>
+                                        request.AddHeader("ContentType", "application/json");
+                                        <br>
+                                        request.AddBody(body,"application/json");
+                                        <br>
+                                        var response = await client.ExecuteAsync(request);                            
+                                        `
+                                        break;
+                                    
+                                    case "bearer":
+                                        codeSnipet.style.backgroundColor = '#393333';
+                                        codeSnipet.innerHTML = 
+                                    `
+                                    var client = new RestClient("${url.value}");
+                                    <br>
+                                    var body = "${textForBody.value}";
+                                    <br>
+                                    var request = new RestRequest();
+                                    <br>
+                                    request.Method = Method.Post;
+                                    <br>
+                                    request.AddHeader("Authorization", "${apiToken.value}");
+                                    <br>
+                                    request.AddHeader("ContentType", "application/json");
+                                    <br>
+                                    request.AddBody(body,"application/json");
+                                    <br>
+                                    var response = await client.ExecuteAsync(request); 
+                                    `
+                                        break;
+                                }
+                    }
+                    break;
+            
     }
 
 });
