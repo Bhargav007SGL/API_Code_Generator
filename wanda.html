@@ -30,18 +30,20 @@
         <select id="language" class="marginleft" style="height: 28px;">
             <option value="javascript">Javascript</option>
             <option value="python">Python</option>
+            <option value="php">PHP</option>
+            <option value="c#">C#</option>
         </select>
         <select id="method" class="marginleft" style="height: 28px;">
             <option value="get" selected>GET</option>
             <option value="post">POST</option>
         </select>
-        <textarea id="postbody" rows="4" placeholder="POST Body" class="marginleft" style="display: none;"></textarea>
+        <textarea id="postbody" rows="4" placeholder="POST Body" class="marginleft" disabled></textarea>
         <input type="text" id="url" placeholder="API URL" style="width: 600px; height: 28px;" class="marginleft">
         <select id="authantication" class="marginleft" style="height: 28px;">
             <option value="noAuth" selected>noAuth</option>
             <option value="bearer">Bearer</option>
         </select>
-        <textarea id="apiToken" rows="10" placeholder="Bearer Token" class="marginleft" style="display: none;"></textarea>
+        <textarea id="apiToken" rows="10" placeholder="Bearer Token" class="marginleft" disabled></textarea>
         <button id="send" class="marginleft" style="height: 28px;">Send</button>
     </div>
     <div id="codeSnipet">
